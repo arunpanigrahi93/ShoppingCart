@@ -3,9 +3,17 @@ import { ShoppingCartContext } from "../../context"; // Corrected context name f
 import ProductItem from "../../components/ProductItem"; // Ensure correct casing
 
 function ProductListPage() {
-  const { listOfProducts } = useContext(ShoppingCartContext); // Corrected context name
+  const { listOfProducts, loading } = useContext(ShoppingCartContext); // Corrected context name
 
   console.log(listOfProducts);
+
+  if (loading) {
+    return (
+      <h3 className="max-w-md mx-auto text-center sm:py-16">
+        Loading Products please wait..
+      </h3>
+    );
+  }
 
   return (
     <section className="py-12 bg-white sm:py-16 lg:py-20">
