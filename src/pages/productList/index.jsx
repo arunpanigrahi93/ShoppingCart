@@ -5,7 +5,7 @@ import ProductItem from "../../components/ProductItem"; // Ensure correct casing
 function ProductListPage() {
   const { listOfProducts, loading } = useContext(ShoppingCartContext); // Corrected context name
 
-  console.log(listOfProducts);
+  // console.log(listOfProducts);
 
   if (loading) {
     return (

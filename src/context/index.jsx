@@ -10,11 +10,12 @@ export const ShoppingCartContext = createContext(null); // Fixed typo
 function ShoppingCartProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [listOfProducts, setListOfProducts] = useState([]);
+  const [productDetails, setProductDetails] = useState(null);
 
   async function fetchListOfProducts() {
     const apiResponse = await fetch("https://dummyjson.com/products");
     const result = await apiResponse.json();
-    console.log(result);
+    // console.log(result);
 
     if (result && result?.products) {
       setListOfProducts(result?.products);
@@ -28,7 +29,15 @@ function ShoppingCartProvider({ children }) {
 
   console.log(listOfProducts);
   return (
-    <ShoppingCartContext.Provider value={{ listOfProducts, loading }}>
+    <ShoppingCartContext.Provider
+      value={{
+        listOfProducts,
+        loading,
+        setLoading,
+        productDetails,
+        setProductDetails,
+      }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );
