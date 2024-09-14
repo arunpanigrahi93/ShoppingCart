@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../context"; // Corrected context name from ShopingCartContext to ShoppingCartContext
-import ProductItem from "../../components/ProductItem"; // Ensure correct casing
+import { ShoppingCartContext } from "../../context";
+import ProductItem from "../../components/ProductItem";
 
 function ProductListPage() {
-  const { listOfProducts, loading } = useContext(ShoppingCartContext); // Corrected context name
+  const { listOfProducts, loading } = useContext(ShoppingCartContext);
 
   // console.log(listOfProducts);
 

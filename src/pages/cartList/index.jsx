@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ShoppingCartContext } from "../../context";
 import { useNavigate } from "react-router-dom";
-import CartTile from "../../components/cartTile";
+import CartItem from "../../components/cartItem";
 
 function CartListPage() {
   const { cartItems } = useContext(ShoppingCartContext);
@@ -16,7 +16,7 @@ function CartListPage() {
         <div className="md:col-span-2 space-y-4">
           {cartItems?.length ? (
             cartItems.map((singleCartItem) => (
-              <CartTile singleCartItem={singleCartItem} />
+              <CartItem singleCartItem={singleCartItem} />
             ))
           ) : (
             <h1>No items available in cart!Please add some items</h1>
@@ -45,7 +45,7 @@ function CartListPage() {
               Checkout
             </button>
             <button
-              onClick={() => navigate("/productlist")}
+              onClick={() => navigate("/")}
               className="text-sm px-4 py-3 bg-black text-white font-extrabold"
             >
               Continue Shopping

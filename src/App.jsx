@@ -4,6 +4,7 @@ import ProductDetailsPage from "./pages/productDetails";
 import CartListPage from "./pages/cartList";
 import Navbar from "./components/navbar";
 import About from "./pages/aboutPage";
+import Footer from "./components/footer";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/productdetails/:id" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<CartListPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }

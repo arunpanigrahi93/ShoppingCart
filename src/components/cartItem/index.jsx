@@ -1,7 +1,7 @@
 import { Fragment, useContext } from "react";
 import { ShoppingCartContext } from "../../context";
 
-function CartTile({ singleCartItem }) {
+function CartItem({ singleCartItem }) {
   const { handleRemoveFromCart, handleAddToCart } =
     useContext(ShoppingCartContext);
 
@@ -13,6 +13,7 @@ function CartTile({ singleCartItem }) {
             <img
               src={singleCartItem?.thumbnail}
               className="w-full h-full object-contain"
+              alt={singleCartItem?.title}
             />
           </div>
           <div>
@@ -31,29 +32,35 @@ function CartTile({ singleCartItem }) {
           <h3 className="text-lg font-bold text-gray-900">
             ${singleCartItem?.totalPrice.toFixed(2)}
           </h3>
-          <p className="mt-2 mb-3 font-bolf text-[16px]">
+          <p className="mt-2 mb-3 font-bold text-[16px]">
             Quantity: {singleCartItem?.quantity}
           </p>
-          <div className="mt-3">
+          <div className="mt-3 flex items-center">
             <button
-              onClick={() => handleRemoveFromCart(singleCartItem, false)}
-              className="disabled:opacity-65 border border-[#000]"
-              disabled={singleCartItem?.quantity === 1}
+              onClick={() => {
+                if (singleCartItem?.quantity === 1) {
+                  handleRemoveFromCart(singleCartItem, true);
+                } else {
+                  handleRemoveFromCart(singleCartItem, false);
+                }
+              }}
+              className="disabled:opacity-65 border border-[#000] px-2 py-1"
             >
               -
             </button>
+            <span className="mx-3">{singleCartItem?.quantity}</span>
             <button
               onClick={() => handleAddToCart(singleCartItem)}
-              className="border border-[#000]"
+              className="border border-[#000] px-2 py-1"
             >
               +
             </button>
           </div>
         </div>
       </div>
-      <hr className="border-gray-500" />
+      <hr className="border-gray-500 mt-4" />
     </Fragment>
   );
 }
 
-export default CartTile;
+export default CartItem;
